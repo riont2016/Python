@@ -1,5 +1,8 @@
 #!/usr/bin/env
 #-*- coding:utf-8 -*-
+"""
+从中国银行提取实时汇率到本地数据库
+"""
 __author__="riont"
 import re
 from lxml import etree
