@@ -15,11 +15,11 @@ PSWD = 'yall123'
 country =["英镑","港币","美元","瑞士法郎","新加坡元","瑞典克朗","丹麦克朗","挪威克朗","日元","加拿大元","澳大利亚元","欧元","澳门元","菲律宾比索","泰国铢","新西兰元","韩国元","卢布","林吉特","新台币","印尼卢比","巴西里亚尔","阿联酋迪拉姆","印度卢比","南非兰特","沙特里亚尔","土耳其里拉"]
 url = 'http://www.boc.cn/sourcedb/whpj/index.html'
 html = requests.get(url).content.decode('utf8')
+conn = pymysql.connect(host=HOST, user=USER,passwd=PSWD,charset="utf8")
 for str_country in country:
     a = html.index("<td>"+ str_country + "</td>")
     s = html[a:a + 300]
     result = re.findall('<td>(.*?)</td>', s)
-    conn = pymysql.connect(host=HOST, user=USER,passwd=PSWD,charset="utf8")
     cursor = conn.cursor()
     conn.select_db(DB)
     name = result[0]
